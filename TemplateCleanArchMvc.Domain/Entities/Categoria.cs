@@ -20,6 +20,11 @@ namespace TemplateCleanArchMvc.Domain.Entities
             ValidateDomain(descricao);
         }
 
+        public void Update(string descricao)
+        {
+            ValidateDomain(descricao);
+        }
+
         public ICollection<Produto> Produtos { get; set; }
 
         private void ValidateDomain(string descricao)
