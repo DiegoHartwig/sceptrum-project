@@ -2,9 +2,8 @@
 
 namespace TemplateCleanArchMvc.Domain.Entities
 {
-    public sealed class Produto
-    {
-        public int Id { get; private set; }
+    public sealed class Produto : EntidadeBase
+    {  
         public string Descricao { get; private set; }
         public string Nome { get; private set; }
         public string Preco { get; private set; }

@@ -3,9 +3,8 @@ using TemplateCleanArchMvc.Domain.Validation;
 
 namespace TemplateCleanArchMvc.Domain.Entities
 {
-    public sealed class Categoria
-    {
-        public int Id { get; private set; }
+    public sealed class Categoria : EntidadeBase
+    {    
         public string Descricao { get; private set; }
 
         public Categoria(string descricao)
