@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TemplateCleanArchMvc.Domain.Validation;
 
 namespace TemplateCleanArchMvc.Domain.Entities
 {
@@ -9,15 +10,25 @@ namespace TemplateCleanArchMvc.Domain.Entities
 
         public Categoria(string descricao)
         {
-            Descricao = descricao;
+            ValidateDomain(descricao);
         }
 
         public Categoria(int id, string descricao)
         {
+            DomainExceptionValidation.When(id < 0, "Id inválido.");
             Id = id;
-            Descricao = descricao;
+            ValidateDomain(descricao);
         }
 
         public ICollection<Produto> Produtos { get; set; }
+
+        private void ValidateDomain(string descricao)
+        {
+            DomainExceptionValidation.When(string.IsNullOrEmpty(descricao), "Descrição inválida. Descrição é obrigatória");
+
+            DomainExceptionValidation.When(descricao.Length < 3, "Descrição deve ter no mínimo 3 caracteres");
+
+            Descricao = descricao;
+        }
     }
 }
