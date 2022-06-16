@@ -12,8 +12,11 @@ namespace TemplateCleanArch.Infra.Data.DBContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);
-            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDBContext).Assembly);
+            base
+                .OnModelCreating(builder);
+
+            builder
+                .ApplyConfigurationsFromAssembly(typeof(ApplicationDBContext).Assembly);
         }
     }
 }
