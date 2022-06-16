@@ -3,9 +3,9 @@ using TemplateCleanArch.Domain.Entities;
 
 namespace TemplateCleanArch.Infra.Data.DBContext
 {
-    public class ApplicationDBContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
@@ -16,7 +16,7 @@ namespace TemplateCleanArch.Infra.Data.DBContext
                 .OnModelCreating(builder);
 
             builder
-                .ApplyConfigurationsFromAssembly(typeof(ApplicationDBContext).Assembly);
+                .ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }
 }

@@ -6,9 +6,9 @@ namespace TemplateCleanArch.Domain.Interfaces
 {
     public interface ICategoriaRepository
     {
-        Task<IEnumerable<Categoria>> BuscarCategoriasAsync();
-        Task<Categoria> BuscarPeloIdAsync(int? id);
         Task<Categoria> CriarAsync(Categoria categoria);
+        Task<Categoria> BuscarPeloIdAsync(int? id);
+        Task<IEnumerable<Categoria>> BuscarCategoriasAsync();
         Task<Categoria> AtualizarAsync(Categoria categoria);
         Task<Categoria> RemoverAsync(Categoria categoria);
     }
