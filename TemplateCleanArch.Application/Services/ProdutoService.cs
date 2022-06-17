@@ -53,19 +53,7 @@ namespace TemplateCleanArch.Application.Services
 			var resultado = await _mediator.Send(produtosPorIdQuery);
 
 			return _mapper.Map<ProdutoDTO>(resultado);
-		}
-
-		public async Task<ProdutoDTO> BuscarProdutoCategoriaAsync(int? id)
-		{
-			var produtosPorIdQuery = new BuscarProdutosPeloIdQuery(id.Value);
-
-			if (produtosPorIdQuery == null)
-				throw new Exception("Ocorreu um erro.");
-
-			var resultado = await _mediator.Send(produtosPorIdQuery);
-
-			return _mapper.Map<ProdutoDTO>(resultado);
-		}
+		}		
 
 		public async Task<IEnumerable<ProdutoDTO>> BuscarProdutosAsync()
 		{

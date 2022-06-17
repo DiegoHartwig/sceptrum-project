@@ -8,8 +8,7 @@ namespace TemplateCleanArch.Domain.Interfaces
     {
         Task<Produto> CriarAsync(Produto produto);
         Task<Produto> BuscarPeloIdAsync(int? id);
-        Task<IEnumerable<Produto>> BuscarProdutosAsync();
-        Task<Produto> BuscarProdutoCategoriaAsync(int? id); 
+        Task<IEnumerable<Produto>> BuscarProdutosAsync(); 
         Task<Produto> AtualizarAsync(Produto produto);
         Task<Produto> RemoverAsync(Produto produto);
     }
