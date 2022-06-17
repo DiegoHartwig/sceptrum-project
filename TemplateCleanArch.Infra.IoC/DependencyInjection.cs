@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TemplateCleanArch.Application.Interfaces;
+using TemplateCleanArch.Application.Mapeamentos;
+using TemplateCleanArch.Application.Services;
 using TemplateCleanArch.Domain.Interfaces;
 using TemplateCleanArch.Infra.Data.DBContext;
 using TemplateCleanArch.Infra.Data.Repositories;
@@ -19,8 +22,13 @@ namespace TemplateCleanArch.Infra.IoC
                         .UseSqlServer(
                             configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+            services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<IProdutoService, ProdutoService>();
+
             services.AddScoped<ICategoriaRepository, CategoriaRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+            services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
 
             return services;
         }

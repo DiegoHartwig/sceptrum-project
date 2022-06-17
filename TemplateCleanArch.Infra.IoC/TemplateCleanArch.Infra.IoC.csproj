@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TemplateCleanArch.Application\TemplateCleanArch.Application.csproj" />
     <ProjectReference Include="..\TemplateCleanArch.Domain\TemplateCleanArch.Domain.csproj" />
     <ProjectReference Include="..\TemplateCleanArch.Infra.Data\TemplateCleanArch.Infra.Data.csproj" />
