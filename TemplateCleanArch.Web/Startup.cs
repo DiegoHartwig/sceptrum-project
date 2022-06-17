@@ -49,7 +49,7 @@ namespace TemplateCleanArch.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Categorias}/{action=Index}/{id?}");
+                    pattern: "{controller=Produtos}/{action=Index}/{id?}");
             });
         }
     }
