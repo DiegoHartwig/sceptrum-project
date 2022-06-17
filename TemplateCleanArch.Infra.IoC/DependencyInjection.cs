@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using TemplateCleanArch.Application.Interfaces;
 using TemplateCleanArch.Application.Mapeamentos;
 using TemplateCleanArch.Application.Services;
@@ -29,6 +31,9 @@ namespace TemplateCleanArch.Infra.IoC
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
             services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
+
+            var myHandlers = AppDomain.CurrentDomain.Load("TemplateCleanArch.Application");
+            services.AddMediatR(myHandlers);
 
             return services;
         }
