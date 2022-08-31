@@ -3,9 +3,11 @@ using System;
 using System.Threading.Tasks;
 using SceptrumProject.Application.DTO;
 using SceptrumProject.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SceptrumProject.Web.Controllers
 {
+    [Authorize]
     public class CategoriasController : Controller
     {
         private readonly ICategoriaService _categoriaService;
@@ -69,6 +71,7 @@ namespace SceptrumProject.Web.Controllers
             return View(categoriaDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet()]
         public async Task<IActionResult> Deletar(int? id)
         {

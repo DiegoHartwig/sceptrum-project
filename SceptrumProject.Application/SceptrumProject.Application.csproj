@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SceptrumProject.Domain\SceptrumProjectSceptrumProject.Domain.csproj" />
+    <ProjectReference Include="..\SceptrumProject.Domain\SceptrumProject.Domain.csproj" />
   </ItemGroup>
 
 </Project>

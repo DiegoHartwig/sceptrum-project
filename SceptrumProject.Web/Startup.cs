@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SceptrumProject.Domain.SecurityAccount;
 using SceptrumProject.Infra.IoC;
 
 namespace SceptrumProject.Web
@@ -26,8 +27,9 @@ namespace SceptrumProject.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRole seedUserRole)
+        {            
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -43,6 +45,11 @@ namespace SceptrumProject.Web
 
             app.UseRouting();
 
+            // Seed initial, usuarios e perfis
+            seedUserRole.SeedRoles();
+            seedUserRole.SeedUsers();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

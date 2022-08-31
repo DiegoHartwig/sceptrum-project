@@ -5,9 +5,11 @@ using System.IO;
 using System.Threading.Tasks;
 using SceptrumProject.Application.DTO;
 using SceptrumProject.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SceptrumProject.Web.Controllers
 {
+    [Authorize]
     public class ProdutosController : Controller
     {
         private readonly IProdutoService _produtoService;

@@ -10,9 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SceptrumProject.Application\SceptrumProjectSceptrumProject.Application.csproj" />
-    <ProjectReference Include="..\SceptrumProject.Domain\SceptrumProjectSceptrumProject.Domain.csproj" />
-    <ProjectReference Include="..\SceptrumProject.Infra.Data\SceptrumProjectSceptrumProject.Infra.Data.csproj" />
+    <ProjectReference Include="..\SceptrumProject.Application\SceptrumProject.Application.csproj" />
+    <ProjectReference Include="..\SceptrumProject.Domain\SceptrumProject.Domain.csproj" />
+    <ProjectReference Include="..\SceptrumProject.Infra.Data\SceptrumProject.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>
