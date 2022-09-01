@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using SceptrumProject.Domain.Entities;
 
 namespace SceptrumProject.Application.DTO
@@ -37,6 +38,7 @@ namespace SceptrumProject.Application.DTO
         [DisplayName("Imagem do Produto")]
         public string Imagem { get; set; }
 
+        [JsonIgnore]
         public Categoria Categoria { get; set; }
 
         [DisplayName("Categorias")]
