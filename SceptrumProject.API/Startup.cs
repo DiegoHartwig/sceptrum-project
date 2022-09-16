@@ -24,6 +24,11 @@ namespace SceptrumProject.API
             services
                 .AddInfrastructureAPI(Configuration);
 
+            // Ativar autenticação e validar o token
+            services.AddInfrastructureJwt(Configuration);
+
+            services.AddInfrastructureSwagger();
+
             services
                 .AddControllers();
                 //.AddJsonOptions(options =>
@@ -31,11 +36,6 @@ namespace SceptrumProject.API
                 //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
                 //});
 
-            services
-                .AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SceptrumProject.API", Version = "v1" });
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,9 +49,9 @@ namespace SceptrumProject.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStatusCodePages();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
