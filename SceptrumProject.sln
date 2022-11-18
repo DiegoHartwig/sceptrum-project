@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Web", "Scep
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Domain.Tests", "SceptrumProject.Domain.Tests\SceptrumProject.Domain.Tests.csproj", "{8E020DFE-EB6D-4999-A755-CE2752FDEE95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SceptrumProject.API", "SceptrumProject.API\SceptrumProject.API.csproj", "{D7165ECC-E391-4734-BB68-1B2EB8C88BD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.API", "SceptrumProject.API\SceptrumProject.API.csproj", "{D7165ECC-E391-4734-BB68-1B2EB8C88BD0}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FA7B79C6-3DCB-4E14-B435-4B4248219838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{D7165ECC-E391-4734-BB68-1B2EB8C88BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7165ECC-E391-4734-BB68-1B2EB8C88BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7165ECC-E391-4734-BB68-1B2EB8C88BD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA7B79C6-3DCB-4E14-B435-4B4248219838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7B79C6-3DCB-4E14-B435-4B4248219838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA7B79C6-3DCB-4E14-B435-4B4248219838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7B79C6-3DCB-4E14-B435-4B4248219838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,25 @@
+version: '3.4'
+services:
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "SqlServer2022!"
+      MSSQL_PID: Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - C:\volumes\sqlserver:/var/opt/mssql/data
+  sceptrumproject.web:
+    image: ${DOCKER_REGISTRY-}sceptrumprojectweb
+    build: 
+     context: .
+     dockerfile: Dockerfile
+    environment:
+      DbServer: "mssql-server"
+      DbPort: "1433"
+      DbUser: "SA"
+      Password: "SqlServer2022!"
+      Database: "bdSceptrum"
+    ports: 
+      - "8090:80"
