@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Domain", "SceptrumProject.Domain\SceptrumProject.Domain.csproj", "{E51E5FE6-F16E-4B00-BBED-18242E22F87E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Domain", "backend\SceptrumProject.Domain\SceptrumProject.Domain.csproj", "{E51E5FE6-F16E-4B00-BBED-18242E22F87E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Application", "SceptrumProject.Application\SceptrumProject.Application.csproj", "{7BFAF95D-5D88-4647-96C9-B23EE6651859}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Application", "backend\SceptrumProject.Application\SceptrumProject.Application.csproj", "{7BFAF95D-5D88-4647-96C9-B23EE6651859}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Infra.Data", "SceptrumProject.Infra.Data\SceptrumProject.Infra.Data.csproj", "{DC3DE779-3F23-47B5-A68C-7AFDC44B4F15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Infra.Data", "backend\SceptrumProject.Infra.Data\SceptrumProject.Infra.Data.csproj", "{DC3DE779-3F23-47B5-A68C-7AFDC44B4F15}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Infra.IoC", "SceptrumProject.Infra.IoC\SceptrumProject.Infra.IoC.csproj", "{D5224FCA-187F-4780-BB23-A03B394298D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Infra.IoC", "backend\SceptrumProject.Infra.IoC\SceptrumProject.Infra.IoC.csproj", "{D5224FCA-187F-4780-BB23-A03B394298D5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Web", "SceptrumProject.Web\SceptrumProject.Web.csproj", "{1912F0E6-6DEB-4875-95B2-3EAEA340C7C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Web", "backend\SceptrumProject.Web\SceptrumProject.Web.csproj", "{1912F0E6-6DEB-4875-95B2-3EAEA340C7C9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Domain.Tests", "SceptrumProject.Domain.Tests\SceptrumProject.Domain.Tests.csproj", "{8E020DFE-EB6D-4999-A755-CE2752FDEE95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.Domain.Tests", "backend\SceptrumProject.Domain.Tests\SceptrumProject.Domain.Tests.csproj", "{8E020DFE-EB6D-4999-A755-CE2752FDEE95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.API", "SceptrumProject.API\SceptrumProject.API.csproj", "{D7165ECC-E391-4734-BB68-1B2EB8C88BD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SceptrumProject.API", "backend\SceptrumProject.API\SceptrumProject.API.csproj", "{D7165ECC-E391-4734-BB68-1B2EB8C88BD0}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FA7B79C6-3DCB-4E14-B435-4B4248219838}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "backend\docker-compose.dcproj", "{FA7B79C6-3DCB-4E14-B435-4B4248219838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
