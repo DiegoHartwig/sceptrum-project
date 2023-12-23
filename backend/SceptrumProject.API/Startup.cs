@@ -5,10 +5,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using SceptrumProject.Domain.SecurityAccount;
 using SceptrumProject.Infra.IoC;
-using System.Text.Json.Serialization;
 
 namespace SceptrumProject.API
 {
@@ -34,10 +32,18 @@ namespace SceptrumProject.API
 
             services
                 .AddControllers();
-                //.AddJsonOptions(options =>
-                //{
-                //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-                //});
+            //.AddJsonOptions(options =>
+            //{
+            //    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            //});
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins("http://127.0.0.1:5173")
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod());
+            });
 
         }
 
@@ -58,6 +64,9 @@ namespace SceptrumProject.API
             seedUserRole.SeedUsers();
 
             app.UseAuthentication();
+
+            app.UseCors("AllowSpecificOrigin");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

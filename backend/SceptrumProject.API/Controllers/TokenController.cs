@@ -31,12 +31,12 @@ namespace SceptrumProject.API.Controllers
         [HttpPost("LoginUser")]
         public async Task<ActionResult<UserToken>> Login([FromBody] LoginDTO loginDto)
         {
-            var result =  await _auth.Authenticate(loginDto.Email, loginDto.Password);
+            var result = await _auth.Authenticate(loginDto.Email, loginDto.Password);
 
             if (result)
             {
                 return GenerateToken(loginDto);
-            } 
+            }
             else
             {
                 ModelState.AddModelError(string.Empty, "Dados de login inválidos.");
@@ -59,6 +59,55 @@ namespace SceptrumProject.API.Controllers
                 ModelState.AddModelError(string.Empty, "Dados de registro inválidos.");
                 return BadRequest(ModelState);
             }
+        }
+
+        [Authorize]
+        [HttpGet("VerificarTokenValido")]
+        public async Task<ActionResult> VerificarTokenValido()
+        {
+            string bearerToken = HttpContext.Request.Headers["Authorization"].ToString();
+
+            if (String.IsNullOrEmpty(bearerToken))
+                return BadRequest();
+
+            var tokenValido = VerificarValidadeToken(bearerToken);
+
+            if(tokenValido)
+                return Ok(tokenValido);
+
+            return Unauthorized("Token inválido ou expirado");
+        }
+
+        private bool VerificarValidadeToken(string bearerToken)
+        {
+            if (String.IsNullOrEmpty(bearerToken))
+                return false;
+
+            string tokenJwt = bearerToken.Replace("Bearer ", "");
+
+            var secret = Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]);
+            var chaveSecreta = new SymmetricSecurityKey(secret);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            try
+            {
+                tokenHandler.ValidateToken(tokenJwt, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidIssuer = _configuration["Jwt:Issuer"],
+                    ValidAudience = _configuration["Jwt:Audience"],
+                    IssuerSigningKey = chaveSecreta
+                }, out SecurityToken tokenValido);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         private UserToken GenerateToken(LoginDTO loginDto)
