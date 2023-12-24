@@ -6,7 +6,7 @@
   <li>
     <router-link :to="{name:'produtos'}">Produtos</router-link>
   </li>  
-  <li v-if="!auth.estaAutenticado">
+  <li v-if="!auth.estaAutenticado()">
     <router-link :to="{name:'login'}">Login</router-link>
   </li>
   <li v-else>
