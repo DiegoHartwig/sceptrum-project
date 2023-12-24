@@ -30,15 +30,14 @@ import {useAuth} from '@/stores/auth.js';
 const auth = useAuth();
 
 const dadosUsuario = reactive({
-  email:'usuario@localhost',
-  password:'MyPassword#123'
+  email:'',
+  password:''
 })
 
 async function login(){
   try {
-    const { data } = await http.post('/api/Token/LoginUser', dadosUsuario);
+    const { data } = await http.post('/api/Token/Login', dadosUsuario);
     auth.setToken(data.token);
-    console.log(data);
   } catch (error) {
     console.log(error?.response?.data);
   }

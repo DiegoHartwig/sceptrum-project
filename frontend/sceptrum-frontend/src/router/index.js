@@ -28,24 +28,19 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach(async (to, from, next) => {
-  if(to.meta?.auth){
-    const auth = useAuth();
+router.beforeEach(async (para, de, proximo) => {
+  const precisaAutenticacao = para.meta?.auth;
+  const autenticacao = useAuth();
 
-    if(auth.token){
-      const autenticado = await auth.verificarTokenValido();
-      console.log("autenticado: " + autenticado);
-      if(autenticado){
-        next();
-      } else {
-        next({ name:'login' });
-      }
-    } else {
-      next({ name:'login' });
-    }
-  } else {
-    next();
-  }
-})
+  const redirecionarParaLogin = () => proximo({ name: 'login' });
+  const prosseguir = () => proximo();
+
+  if (!precisaAutenticacao) return prosseguir();
+
+  if (!autenticacao.token) return redirecionarParaLogin();
+
+  const estaAutenticado = await autenticacao.verificarTokenValido();
+  return estaAutenticado ? prosseguir() : redirecionarParaLogin();
+});
 
 export default router

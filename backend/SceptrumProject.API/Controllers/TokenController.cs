@@ -28,37 +28,25 @@ namespace SceptrumProject.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("LoginUser")]
-        public async Task<ActionResult<UserToken>> Login([FromBody] LoginDTO loginDto)
+        [HttpPost("Login")]
+        public async Task<ActionResult<TokenUsuario>> Login([FromBody] LoginDTO loginDto)
         {
-            var result = await _auth.Authenticate(loginDto.Email, loginDto.Password);
+            var resultado = await _auth.Authenticate(loginDto.Email, loginDto.Password);
 
-            if (result)
-            {
-                return GenerateToken(loginDto);
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Dados de login inválidos.");
-                return BadRequest(ModelState);
-            }
+            return resultado ?
+                GerarTokenJwt(loginDto) :
+                ExibirRespostaErro("Dados de login inválidos.", 401);
         }
 
         [Authorize]
-        [HttpPost("Register")]
-        public async Task<ActionResult> Register([FromBody] LoginDTO loginDto)
+        [HttpPost("Registrar")]
+        public async Task<ActionResult> Registrar([FromBody] LoginDTO loginDto)
         {
-            var result = await _auth.RegisterUser(loginDto.Email, loginDto.Password);
+            var resultado = await _auth.RegisterUser(loginDto.Email, loginDto.Password);
 
-            if (result)
-            {
-                return Ok($"Usuário: {loginDto.Email} criado com sucesso.");
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Dados de registro inválidos.");
-                return BadRequest(ModelState);
-            }
+            return resultado ?
+                Ok($"Usuário: {loginDto.Email} criado com sucesso.") :
+                ExibirRespostaErro("Dados de registro inválidos.", 400);
         }
 
         [Authorize]
@@ -72,10 +60,9 @@ namespace SceptrumProject.API.Controllers
 
             var tokenValido = VerificarValidadeToken(bearerToken);
 
-            if(tokenValido)
-                return Ok(tokenValido);
-
-            return Unauthorized("Token inválido ou expirado");
+            return tokenValido ?
+                Ok(tokenValido) :
+                ExibirRespostaErro("Token inválido ou expirado", 401);
         }
 
         private bool VerificarValidadeToken(string bearerToken)
@@ -110,13 +97,12 @@ namespace SceptrumProject.API.Controllers
             return true;
         }
 
-        private UserToken GenerateToken(LoginDTO loginDto)
+        private TokenUsuario GerarTokenJwt(LoginDTO loginDto)
         {
             // Declarações do usuário
             var claims = new[]
             {
                 new Claim("email", loginDto.Email),
-                new Claim("minhaclaim", "valordaclaim"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -143,11 +129,17 @@ namespace SceptrumProject.API.Controllers
                 signingCredentials: credentials
                 );
 
-            return new UserToken()
+            return new TokenUsuario()
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(tokenJwt),
                 Expiration = expiration
             };
+        }
+
+        private ObjectResult ExibirRespostaErro(string mensagem, int statusCode)
+        {
+            ModelState.AddModelError(string.Empty, mensagem);
+            return new ObjectResult(ModelState) { StatusCode = statusCode };
         }
     }
 }
