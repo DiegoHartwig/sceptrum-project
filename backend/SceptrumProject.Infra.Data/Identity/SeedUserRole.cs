@@ -23,10 +23,10 @@ namespace SceptrumProject.Infra.Data.Identity
             {
                 ApplicationUser user = new()
                 {
-                    UserName = "usuario@localhost",
-                    Email = "usuario@localhost",
-                    NormalizedUserName = "USUARIO@LOCALHOST",
-                    NormalizedEmail = "USUARIO@LOCALHOST",
+                    UserName = "usuario@mail.com",
+                    Email = "usuario@mail.com",
+                    NormalizedUserName = "USUARIO@MAIL.COM",
+                    NormalizedEmail = "USUARIO@MAIL.COM",
                     EmailConfirmed = true,
                     LockoutEnabled = false,
                     SecurityStamp = Guid.NewGuid().ToString()
@@ -40,14 +40,14 @@ namespace SceptrumProject.Infra.Data.Identity
                 }
             }
 
-            if (_userManager.FindByEmailAsync("admin@localhost").Result == null)
+            if (_userManager.FindByEmailAsync("admin@mail.com").Result == null)
             {
                 ApplicationUser user = new()
                 {
-                    UserName = "admin@localhost",
-                    Email = "admin@localhost",
-                    NormalizedUserName = "ADMIN@LOCALHOST",
-                    NormalizedEmail = "ADMIN@LOCALHOST",
+                    UserName = "admin@mail.com",
+                    Email = "admin@mail.com",
+                    NormalizedUserName = "ADMIN@MAIL.COM",
+                    NormalizedEmail = "ADMIN@MAIL.COM",
                     EmailConfirmed = true,
                     LockoutEnabled = false,
                     SecurityStamp = Guid.NewGuid().ToString()
