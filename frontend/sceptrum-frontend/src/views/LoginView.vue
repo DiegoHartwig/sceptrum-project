@@ -11,7 +11,7 @@
             <q-card-section>
               <q-form @submit.prevent="login">
                 <q-input 
-                 filled 
+                 outlined 
                  type="email" 
                  label="E-mail" 
                  placeholder="Digite seu e-mail"
@@ -21,7 +21,7 @@
                  ></q-input>
 
                 <q-input 
-                 filled 
+                 outlined 
                  type="password" 
                  label="Senha" 
                  placeholder="Digite sua senha"
@@ -48,6 +48,7 @@ import { useAuth } from '@/stores/auth.js';
 import http from '@/services/http.js';
 import router from '@/router';
 import { nextTick } from 'vue';
+import { useQuasar } from 'quasar'
 
 const auth = useAuth();
 

@@ -24,6 +24,11 @@ const router = createRouter({
       meta: {
         auth:true
       }
+    },
+    {
+      path: '/gerenciar-produto/:id?',
+      name: 'gerenciarProduto',
+      component: () => import('../views/GerenciarProduto.vue')
     }
   ]
 })
